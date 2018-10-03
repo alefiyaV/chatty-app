@@ -7,29 +7,69 @@ class App extends Component {
 
   constructor (props) {
     super(props);
+
+    this.socket = new WebSocket("ws://0.0.0.0:3001/");
+
     this.state = {
-      loading: true,
+
       data: {
               currentUser: {name: "Bob"}, // optional. if currentUser is not defined, it means the user is Anonymous
-              messages: [
-              {
-                id: 1,
-                username: "Bob",
-                content: "Has anyone seen my marbles?",
-              },
-              {   id: 2,
-                username: "Anonymous",
-                content: "No, I think you lost them. You lost your marbles Bob. You lost them for good."
-              }
-              ]
+              messages: []
+            //this.socket = new socket ('ws.path name')
             }
           };
+          
+
+          this.addNewChat = this.addNewChat.bind(this);
+          
+        }
+
+
+        addNewChat(chat) {
+          const newChats = {
+            username: this.state.data.currentUser.name,
+            content: chat
+
+          };
+
+          this.socket.send(JSON.stringify(newChats));
+
+          //let abc = this;
+          this.socket.onmessage = (event) => {
+            let newestMessage = JSON.parse(event.data);
+            const messages = this.state.data.messages.concat(newestMessage);
+            let data = {...this.state.data};
+            //console.log("first data", data)
+            data.messages = messages;
+            //console.log("second data", data)
+            this.setState({ data });
+          }
+
+          //let jsonInput = JSON.stringify({username: this.state.data.currentUser.name,
+          //  content: chat})
         }
 
         componentDidMount() {
-          setTimeout(() => {
-            this.setState({loading: false});
-          }, 3000)
+
+          console.log("componentdidmount <App />");
+          const ws = this.state.socket
+          this.socket.onopen = function (event) {
+            //this.socket.send(event);
+          console.log("connection made to server")
+          }
+
+          
+
+      // this was in componentDidMount before  
+        //   setTimeout(() => {
+
+        //     const newMessage = {id: 3, username: "Michelle", content: "Hello there!"};
+        //     const messages = this.state.data.messages.concat(newMessage);
+        //     const data = {...this.state.data};
+        //     data.messages = messages;
+
+        //     this.setState({data});
+        //   }, 3000)
         }
 
         render() {
@@ -43,7 +83,7 @@ class App extends Component {
               <div>
               <Navbar />
               <MessageList messages={this.state.data.messages} />
-              <Chatbar currentUser={this.state.data.currentUser} />
+              <Chatbar currentUser={this.state.data.currentUser} addNewChat={this.addNewChat}/>
               </div>
               )
             }

@@ -14,10 +14,10 @@ class Message extends Component {
 
 
     return (
-     <main className="messages">
-    <span className="message-username">{this.props.username}</span>
-    <span className="message-content">{this.props.content}</span>
-  </main>
+    <main className="messages">
+      <span className="message-username">{this.props.username}</span>
+      <span className="message-content">{this.props.content}</span>
+    </main>
   )
   }
 }

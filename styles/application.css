@@ -86,4 +86,8 @@ body {
   text-decoration: none;
 }
 
+.hideButton {
+  display: none;
+}
+
 /*# sourceMappingURL=application.css.map */
