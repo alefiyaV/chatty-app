@@ -5,25 +5,38 @@ class Chatbar extends Component {
     super(props);
   }
 
+
+
   render() {
-    const onSubmit = e => {
+
+    const onSubmitMessage = e => {
       e.preventDefault();
       const newMessageContent = e.target.elements.contentInput;
       this.props.addNewChat(newMessageContent.value);
+      
       newMessageContent.value = "";
+    }
+
+    const onSubmitUser = e => {
+      e.preventDefault();
+      const newUsername = e.target.elements.userInput;
+      this.props.addNewUsername(newUsername.value);
+     
     }
 
 
     return (
-      <form onSubmit={onSubmit}>
       <footer className="chatbar">
-      
-      <input className="chatbar-username" defaultValue={this.props.currentUser.name} />
-      <input className="chatbar-message" name="contentInput" placeholder="Type a message and press Enter to send!" />
-      <input type="submit" className="hideButton"/>
-      
+        <form onSubmit={onSubmitUser}>
+          <input className="chatbar-username" name="userInput" defaultValue="Anonymous" />
+          <input type="submit" className="hideButton"/>
+        </form>
+
+        <form onSubmit={onSubmitMessage}>
+          <input className="chatbar-message" name="contentInput" placeholder="Type a message and press Enter to send!" />
+          <input type="submit" className="hideButton"/>
+        </form>
       </footer>
-      </form>
     )
   }
 }
