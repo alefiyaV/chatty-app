@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Notification from './Notifications.jsx'
 
 
 class Message extends Component {
@@ -16,6 +16,9 @@ class Message extends Component {
     return (
     <main className="messages">
       <span className="message-username">{this.props.username}</span>
+
+      <span className="notification-content">{this.props.notifications}</span>
+
       <span className="message-content">{this.props.content}</span>
     </main>
   )

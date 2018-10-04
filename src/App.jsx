@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MessageList from './MessageList.jsx'
 import Chatbar from './ChatBar.jsx'
 import Navbar from './Navbar.jsx'
+//import Notification from './Notification.jsx'
 
 
 class App extends Component {
@@ -25,32 +26,47 @@ class App extends Component {
 
   }
 
-  addNewUsername(user) {
+
+
+  // let data = { ...this.state.data }
+  // console.log("server side data in add user name", data);
+  // data.currentUser.name = user;
+
+
+  addNewUsername(username) {
+    //
+    const newNotifications = {
+      type: "postNotification",
+      content: `${this.state.data.currentUser.name} has changed their name to ${username}`
+    }
+    this.socket.send(JSON.stringify(newNotifications));
     let data = { ...this.state.data }
-    data.currentUser.name = user;
-    this.setState({ data })
+    data.currentUser.name = username;
+    this.setState({data})
   }
+
 
 
   addNewChat(chat) {
     const newChats = {
-      type: "post notification",
+      type: "postMessage",
       username: this.state.data.currentUser.name,
       content: chat
 
     };
-
+    //debugger;
     this.socket.send(JSON.stringify(newChats));
 
-    this.socket.onmessage = (event) => {
-      let newestMessage = JSON.parse(event.data);
-      const messages = this.state.data.messages.concat(newestMessage);
-      let data = { ...this.state.data };
+    // this.socket.onmessage = (event) => {
+    //   let newestMessage = JSON.parse(event.data);
+    //   const messages = this.state.data.messages.concat(newestMessage);
+    //   let data = { ...this.state.data };
 
-      data.messages = messages;
-      this.setState({ data });
-    }
+    //   data.messages = messages;
+    //   this.setState({ data });
+    // }
   }
+
 
   componentDidMount() {
 
@@ -61,44 +77,31 @@ class App extends Component {
       console.log("connection made to server")
     }
 
+
     this.socket.onmessage = (event) => {
-      //console.log(event);
-      const data = JSON.parse(event.data);
+      let newestMessage = JSON.parse(event.data);
 
-      switch(data.type) {
+      switch(newestMessage.type) {
+
         case "incomingMessage":
-        console.log("this is an incoming message")
-        break;
-
         case "incomingNotification":
-        console.log("this is an incoming notification");
+        console.log("this state data", this.state.data.currentUser.name)
+          const messages = this.state.data.messages.concat(newestMessage);
+          let data = { ...this.state.data, messages };
+          this.setState({ data });
         break;
-        
         default:
         console.log("this should be an error since the type is unknown")
       }
-
-      
-
     }
-    // this was in componentDidMount before  
-    //   setTimeout(() => {
-
-    //     const newMessage = {id: 3, username: "Michelle", content: "Hello there!"};
-    //     const messages = this.state.data.messages.concat(newMessage);
-    //     const data = {...this.state.data};
-    //     data.messages = messages;
-
-    //     this.setState({data});
-    //   }, 3000)
   }
 
   render() {
       return (
-
         <div>
           <Navbar />
           <MessageList messages={this.state.data.messages} />
+        
           <Chatbar currentUser={this.state.data.currentUser} addNewChat={this.addNewChat} addNewUsername={this.addNewUsername} />
         </div>
       )
