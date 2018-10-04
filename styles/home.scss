@@ -30,11 +30,11 @@
       padding: 0 9px;
     }
 
-    .chatbar-message {
+    form .chatbar-message {
       flex: 8;
     }
 
-    .chatbar-username {
+    form .chatbar-username {
       flex: 2;
     }
 
@@ -90,3 +90,4 @@
     .hideButton {
   display: none;
 }
+

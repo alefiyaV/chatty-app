@@ -14,9 +14,8 @@ class App extends Component {
     this.state = {
 
       data: {
-        currentUser: { name: "Anonymous" }, // optional. if currentUser is not defined, it means the user is Anonymous
+        currentUser: { name: "Anonymous" }, 
         messages: []
-        //this.socket = new socket ('ws.path name')
       }
     };
 
@@ -35,6 +34,7 @@ class App extends Component {
 
   addNewChat(chat) {
     const newChats = {
+      type: "post notification",
       username: this.state.data.currentUser.name,
       content: chat
 
@@ -42,20 +42,14 @@ class App extends Component {
 
     this.socket.send(JSON.stringify(newChats));
 
-    //let abc = this;
     this.socket.onmessage = (event) => {
       let newestMessage = JSON.parse(event.data);
       const messages = this.state.data.messages.concat(newestMessage);
       let data = { ...this.state.data };
-      console.log("data from new chats", data)
-      //console.log("first data", data)
+
       data.messages = messages;
-      //console.log("second data", data)
       this.setState({ data });
     }
-
-    //let jsonInput = JSON.stringify({username: this.state.data.currentUser.name,
-    //  content: chat})
   }
 
   componentDidMount() {
@@ -67,8 +61,26 @@ class App extends Component {
       console.log("connection made to server")
     }
 
+    this.socket.onmessage = (event) => {
+      //console.log(event);
+      const data = JSON.parse(event.data);
 
+      switch(data.type) {
+        case "incomingMessage":
+        console.log("this is an incoming message")
+        break;
 
+        case "incomingNotification":
+        console.log("this is an incoming notification");
+        break;
+        
+        default:
+        console.log("this should be an error since the type is unknown")
+      }
+
+      
+
+    }
     // this was in componentDidMount before  
     //   setTimeout(() => {
 
@@ -82,11 +94,6 @@ class App extends Component {
   }
 
   render() {
-
-
-    if (this.state.loading) {
-      return <div><h1>Chatty App is loading...</h1></div>
-    } else {
       return (
 
         <div>
@@ -97,7 +104,7 @@ class App extends Component {
       )
     }
   }
-}
+
 
 
 export default App;

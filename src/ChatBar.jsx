@@ -27,12 +27,12 @@ class Chatbar extends Component {
 
     return (
       <footer className="chatbar">
-        <form onSubmit={onSubmitUser}>
-          <input className="chatbar-username" name="userInput" defaultValue="Anonymous" />
+        <form onSubmit={onSubmitUser} className="uform">
+          <input className="chatbar-username" name="userInput" placeholder="Your Name (Optional)" />
           <input type="submit" className="hideButton"/>
         </form>
 
-        <form onSubmit={onSubmitMessage}>
+        <form onSubmit={onSubmitMessage} className="mform">
           <input className="chatbar-message" name="contentInput" placeholder="Type a message and press Enter to send!" />
           <input type="submit" className="hideButton"/>
         </form>
