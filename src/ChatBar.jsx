@@ -21,7 +21,6 @@ class Chatbar extends Component {
       e.preventDefault();
       const newUsername = e.target.elements.userInput;
       this.props.addNewUsername(newUsername.value);
-     
     }
 
 

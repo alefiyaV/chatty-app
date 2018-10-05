@@ -11,6 +11,12 @@ class Notification extends Component {
 
 
   render () {
+    // const onSubmitUsername = e => {
+    //     e.preventDefault();
+    //     console.log(props);
+    //     const newUsername = e.target.elements.userInput;
+    //     //const notifier = 
+    //   }
 
 
     return (
