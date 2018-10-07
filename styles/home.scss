@@ -2,18 +2,16 @@
     @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css");
 
     body {
-      background: white;
-      color: black;
+      background: #f2f2f2;
+      color: #160101;
       font-family: 'Open Sans', sans-serif;
       font-size: 14px;
-      margin: 70px 0;
     }
 
     .chatbar {
-      background: tomato;
+      background: #387aaf;
       border-top: 1px solid black;
       bottom: 0;
-      display: flex;
       left: 0;
       padding: 5px;
       position: fixed;
@@ -30,17 +28,25 @@
       padding: 0 9px;
     }
 
-    form .chatbar-message {
-      flex: 8;
+    form.uform  {
+      width: 20%;
+      float: left;
+    }
+
+    form.mform input {
+      width: 71%;
+      float: right;
     }
 
     form .chatbar-username {
-      flex: 2;
+     width: 98%;
+     
     }
 
-    .message {
-      display: flex;
-      padding: 5px;
+    .messages {
+      padding: 15px;
+      width: 70%;
+      float: right;
     }
 
     .message.system {
@@ -51,41 +57,45 @@
     .message-content,
     .message-username {
       overflow: hidden;
-      margin: 5px;
       padding: 0 10px;
     }
 
     .message-content {
-      flex: 8;
     }
 
     .message-username {
-      flex: 2;
       font-weight: 700;
     }
 
     .navbar {
-      background: tomato;
-      border-bottom: 1px solid black;
-      height: 60px;
-      left: 0;
-      padding: 0 10px;
+      background: #aaaaaa;
+      width: 25%;
+      min-width: 225px;
+      float: right;
+      height: 100%;
       position: fixed;
-      right: 0;
-      top: 0;
+
     }
 
     .navbar-brand {
       color: inherit;
       display: block;
-      float: left;
       font-weight: 700;
-      font-size: 28px;
-      height: 60px;
-      line-height: 60px;
-      padding: 0 10px;
-      text-decoration: none;
+      font-size: 4em;
+
+      padding: 15px 0px 0px 25px;
+      margin-bottom: 0px;
     }
+    .tagline {
+      padding: 0px 25px;
+      margin: 0px;
+      
+    }
+
+    .totalUsers {
+      margin-top: 90%;
+    }
+
 
     .hideButton {
   display: none;

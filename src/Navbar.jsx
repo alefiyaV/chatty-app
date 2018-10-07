@@ -6,14 +6,12 @@ class Navbar extends Component {
   render() {
     return (
       <nav className="navbar">
-        <a href="/" className="navbar-brand">Chatty</a>
-        <div>{this.props.totalUsers}</div>
+        <div><a href="/" className="navbar-brand">synch. </a></div>
+        <div><p className="tagline">you and your friends now.</p></div>
       </nav>
     )
   }
 }
-
-
 export default Navbar
 
 
