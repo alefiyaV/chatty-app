@@ -1,8 +1,12 @@
-# synch messaging
-#### A simple ReactJS real-time messaging web application. Track how many users are connected to your chat and change your username to whatever you like. 
+# Synch messaging system
+#### A simple ReactJS real-time messaging web application. Track how many users are connected to your chat and change your username to whatever you like. No need to register for an account- meaning anyone with a link will be joined to the chat.
 
 !["Friends making plans"](https://github.com/alefiyaV/chatty-app/blob/master/docs/chatty.png)
 
+### Features
+
+* When any connected user sends a message or changes their handle, all users in the chat are notified of the changes or sent the message. 
+* Real-time display of the user count.
 
 ### Usage
 
