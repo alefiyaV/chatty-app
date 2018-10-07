@@ -31,9 +31,10 @@ class MessageList extends Component {
     return (
 
       <main className="messages">
+      
       <div className="totalUsers"><p>Friends online now - {this.props.totalUsers}</p></div>
-      <h2>Messages</h2>
-        {messages}
+      {messages}
+        
       </main>
     )
   }

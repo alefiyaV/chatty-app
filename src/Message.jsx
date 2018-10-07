@@ -12,11 +12,11 @@ class Message extends Component {
 
     return (
     <div>
-      <span>
-        <span className="message-username">{this.props.username}</span> 
+      <div className="each-message">
+        <span className="message-username">{this.props.username} says - </span> 
         {this.props.content} 
         <span className="notification-content"> {this.props.notifications}</span>
-      </span>
+      </div>
     </div>
     )
   }

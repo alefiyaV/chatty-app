@@ -9,8 +9,7 @@
     }
 
     .chatbar {
-      background: #387aaf;
-      border-top: 1px solid black;
+      background: #410c96;
       bottom: 0;
       left: 0;
       padding: 5px;
@@ -18,30 +17,34 @@
       right: 0;
     }
 
-    .chatbar-message,
-    .chatbar-username {
-      border: 1px solid black;
-      display: block;
+    input.chatbar-message {
+      border: 1px solid #f2f2f2;
+      display: inline;
       height: 40px;
       line-height: 40px;
       margin: 5px;
       padding: 0 9px;
-    }
-
-    form.uform  {
-      width: 20%;
       float: left;
+      width: 73.7%;
+      border-radius: 3px;
+
     }
 
-    form.mform input {
-      width: 71%;
-      float: right;
+
+    .chatbar-username {
+      border: 1px solid #f2f2f2;
+      display: inline;
+      height: 40px;
+      line-height: 40px;
+      margin: 5px;
+      padding: 0 9px;
+      float: left;
+      min-width: 185px;
+      border-radius: 3px;
     }
 
-    form .chatbar-username {
-     width: 98%;
-     
-    }
+
+
 
     .messages {
       padding: 15px;
@@ -49,38 +52,43 @@
       float: right;
     }
 
-    .message.system {
-      font-style: italic;
-      padding: 5px 20px;
-    }
+
 
     .message-content,
     .message-username {
       overflow: hidden;
-      padding: 0 10px;
     }
 
-    .message-content {
-    }
 
+
+    .notification-content {
+      font-style: italic;
+      font-weight: 400;
+      color: #e05555;
+    }
     .message-username {
       font-weight: 700;
+      padding-right: 8px;
+    }
+    .each-message {
+      margin: 4px 0px;
     }
 
     .navbar {
-      background: #aaaaaa;
-      width: 25%;
+      background: #410c96;
       min-width: 225px;
-      float: right;
       height: 100%;
       position: fixed;
+      float: left;
 
     }
-
+    img.logo{
+      margin-left: 15px;
+    }
     .navbar-brand {
-      color: inherit;
+      color: #f2f2f2;
       display: block;
-      font-weight: 700;
+      font-weight: 900;
       font-size: 4em;
 
       padding: 15px 0px 0px 25px;
@@ -89,11 +97,21 @@
     .tagline {
       padding: 0px 25px;
       margin: 0px;
+      color: #f2f2f2;
+
       
     }
 
     .totalUsers {
-      margin-top: 90%;
+      padding: 2px 20px;
+      font-size: 1.1em;
+      background-color: #b1d3c7;
+      border-radius: 4px;
+      position: fixed;
+      margin-top: .8em;
+      margin-right: 0.8em;
+      right: 0;
+      top: 0;
     }
 
 
