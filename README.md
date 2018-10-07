@@ -1,7 +1,8 @@
-React Boilerplate
-=====================
+# synch messaging
+#### A simple ReactJS real-time messaging web application. Track how many users are connected to your chat and change your username to whatever you like. 
 
-A minimal and light dev environment for ReactJS.
+!["Friends making plans"](https://github.com/alefiyaV/chatty-app/blob/master/docs/chatty.png)
+
 
 ### Usage
 
